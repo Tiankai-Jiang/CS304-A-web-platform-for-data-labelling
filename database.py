@@ -267,6 +267,7 @@ class sql_conn:
             if ts[0]>tr:
                 cnt += 1
         return cnt
+
     def get_user_mainpage_pan_history(self, user_email):
         userid = self.get_user_id(user_email=user_email)
         sql = "select labeldate from text_label where userid={} order by labeldate desc;".format(userid) 
@@ -319,8 +320,7 @@ class sql_conn:
         return result
         
     def get_admin_passwd(self, admin_email=None):
-        return self.__get_by_option('admin', 'password',
-                                    {'email_address': admin_email})
+        return self.__get_by_option('admin', 'password', {'email_address': admin_email})
     
     def get_admin_access_level(self, admin_email):
         return self.__get_by_option('admin', 'access_level',
@@ -328,8 +328,7 @@ class sql_conn:
     def insert_admin(self, email_addr, adminname, passwd, access_level=1):
         # insertion: 1 success, 0: already exist, -1: fail
         if self.__search_admin_by_name(adminname) == None:
-            sql = "INSERT INTO `se_proj`.`admin` (`email_address`,`adminname`,`password`,`access_level`) VALUES ('{}','{}','{}','{}');" \
-                .format(email_addr, adminname, passwd, access_level)
+            sql = "INSERT INTO `se_proj`.`admin` (`email_address`,`adminname`,`password`,`access_level`) VALUES ('{}','{}','{}','{}');".format(email_addr, adminname, passwd, access_level)
             return self.__insertion(sql)
         else:
             return 0
@@ -355,16 +354,14 @@ class sql_conn:
     def get_source_nb_json(self, sourceid):
         return self.__exe_sql("select nb_json from source where sourceid={};".format(sourceid))[0][0]
 
-    def insert_source(self, sourcename, finished=0, publisher='NULL', description='', publish_time=get_timestamp(),
-                      priority=1, ft_degree=0):
+    def insert_source(self, sourcename, finished=0, publisher='NULL', description='', publish_time=get_timestamp(), priority=1, ft_degree=0):
         # insertion: 1 success, 0: already exist, -1: fail
         if self.__search_source_by_name(sourcename) == None:
             if ft_degree not in [0,1,2]:  #illegal 
                 ft_degree = 0  #default 0
             
             sql = "INSERT INTO `se_proj`.`source` (`sourcename`,`nb_finished`,`publisher`,`description`,`publish_date`, `priority`, `fault_tolerance_degree`) \
-            VALUES ('{}',{}, {},'{}',{},{},{});".format(sourcename, finished, publisher, description, publish_time,
-                                                     priority, ft_degree)
+            VALUES ('{}',{}, {},'{}',{},{},{});".format(sourcename, finished, publisher, description, publish_time, priority, ft_degree)
             print(sql)
             return self.__insertion(sql)
         else:
@@ -372,7 +369,6 @@ class sql_conn:
         
     def get_source_ftdgree(self, sourcename=None, sourceid=None):
         return self.__get_by_option('source', 'fault_tolerance_degree', {'sourcename':sourcename, 'sourceid':sourceid})
-        
         
     def get_recent_source(self, limit=5):
         return self.__exe_sql("select * from source order by publish_date desc limit {};".format(limit))
@@ -388,15 +384,13 @@ class sql_conn:
     
     def get_data_final_label(self, dataid):
         # get the label_content of the data's final_labelid referenced to 
-        sql = "select tl.label_content from text_data td join text_label tl \
-        on td.final_labelid = tl.labelid where td.dataid={};".format(dataid)
+        sql = "select tl.label_content from text_data td join text_label tl on td.final_labelid = tl.labelid where td.dataid={};".format(dataid)
         return self.__exe_sql(sql)
     
     # data *****************************************************************************
     def __insert_textdata(self, sourceid, data_index, data_path, final_labelid='NULL'):
         if self.__search_source_by_id(sourceid) != None:
-            sql = "INSERT INTO `se_proj`.`text_data` (`datasource`,`data_index`,`data_path`,`final_labelid`) VALUES ({},{},'{}',{});" \
-                .format(sourceid, data_index, data_path, final_labelid)
+            sql = "INSERT INTO `se_proj`.`text_data` (`datasource`,`data_index`,`data_path`,`final_labelid`) VALUES ({},{},'{}',{});".format(sourceid, data_index, data_path, final_labelid)
             return self.__insertion(sql)
         else:
             return 0
@@ -412,8 +406,7 @@ class sql_conn:
             for f in files:
                 with open(os.path.join(root_path, f)) as js:
                     data_index = json.load(js)['index']
-                if None != self.__get_by_mul_cond('text_data', 'dataid',
-                                                  {'datasouce': sourceid, 'data_index': data_index}):
+                if None != self.__get_by_mul_cond('text_data', 'dataid', {'datasouce': sourceid, 'data_index': data_index}):
                     continue
                 self.__insert_textdata(sourceid, data_index, os.path.join(root_path, f))
             return 1
@@ -437,7 +430,6 @@ class sql_conn:
         join text_label tl on td.dataid=tl.dataid \
         where tl.userid={} and td.datasource={});".format(sourceid, userid, sourceid)
         print(sql)
-        
         
         l = self.__exe_sql(sql)
         
@@ -486,7 +478,6 @@ class sql_conn:
                 return -1
             proj_name = json_list[0]['projectName']
             save_dir = save_dir+'{}/'.format(proj_name)
-            
             
             #self.set_user_nb_answer(userid, addoffset = len(json_list))
             
