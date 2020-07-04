@@ -1,6 +1,6 @@
 drop table if exists users;
 CREATE TABLE users(
-    userid int PRIMARY KEY,
+    userid int PRIMARY KEY AUTO_INCREMENT,
     email_address varchar(50),
     username varchar(45),
     password varchar(45),
@@ -15,7 +15,7 @@ CREATE TABLE users(
 
 drop table if exists admin;
 CREATE TABLE admin(
-    adminid int PRIMARY KEY,
+    adminid int PRIMARY KEY AUTO_INCREMENT,
     email_address varchar(50),
     adminname varchar(45),
     password varchar(45),
@@ -25,7 +25,7 @@ CREATE TABLE admin(
 
 drop table if exists source;
 CREATE TABLE source(
-    sourceid int PRIMARY KEY,
+    sourceid int PRIMARY KEY AUTO_INCREMENT,
     sourcename varchar(45),
     nb_finished int,
     publisher int,
@@ -39,7 +39,7 @@ CREATE TABLE source(
 
 drop table if exists text_data;
 CREATE TABLE text_data(
-    dataid int PRIMARY KEY,
+    dataid int PRIMARY KEY AUTO_INCREMENT,
     datasource int,
     data_index int,
     data_path varchar(200),

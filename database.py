@@ -221,8 +221,7 @@ class sql_conn:
                     nb_answer=0):
         # insertion: 1 success, 0: already exist, -1: fail
         if self.__search_user_by_name(username) == None:
-            sql = "INSERT INTO `se_proj`.`users` (`username`,`email_address`,`password`,`signin_date`,`credits`) VALUES ('{}','{}','{}','{}','{}');" \
-                .format(username, user_email, passwd, signin_time, credits)
+            sql = "INSERT INTO `se_proj`.`users` (`username`,`email_address`,`password`,`signin_date`,`credits`) VALUES ('{}','{}','{}','{}','{}');".format(username, user_email, passwd, signin_time, credits)
             return self.__insertion(sql)
         else:
             return 0
