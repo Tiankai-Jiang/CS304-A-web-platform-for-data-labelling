@@ -20,7 +20,7 @@ CREATE TABLE admin(
     adminname varchar(45),
     password varchar(45),
     access_level int,
-    UNIQUE KEY (email_address, username, password)   
+    UNIQUE KEY (email_address, adminname, password)   
 );
 
 drop table if exists source;
