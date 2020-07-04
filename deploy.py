@@ -32,7 +32,6 @@ def init_cnx():
 def index():
     return redirect(url_for('index_void'))
 
-
 @app.route("/")
 @cross_origin()
 def index_void():
@@ -45,7 +44,6 @@ def index_void():
             return render_template('indexAX.html')
     return redirect(url_for('mainpage'))
 
-
 @app.route('/logout')
 def logout():
     # remove the username from the session if it is there
@@ -57,7 +55,6 @@ def logout():
 @cross_origin()
 def logout_page():
     return render_template("logout.html")
-
 
 @app.route("/login.html", methods=['GET', 'POST'])
 @cross_origin()
@@ -156,6 +153,7 @@ def email_register(user_name, user_email, pass_word):
         result = {'code': 1, 'message': 'User already exists!'}
     else:
         result = {'code': 1, 'message': 'Register failed! Please try later!'}
+    print(result)
     return jsonify(result)
 
 

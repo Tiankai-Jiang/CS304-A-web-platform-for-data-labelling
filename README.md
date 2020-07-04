@@ -1,7 +1,7 @@
 # CS304-A-web-platform-for-data-labelling
 
 ## 🔨 Dependency Installation 🔨
-`sudo pip install flask`
+`sudo pip install flask, flask-cors`
 
 `sudo pip install mysqlclient`
 
