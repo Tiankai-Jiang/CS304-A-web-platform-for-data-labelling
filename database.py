@@ -3,7 +3,7 @@ import os
 import json
 import datetime
 import random
-from shutil import copyfile,make_archive, rmtree
+from shutil import copyfile, make_archive, rmtree
 import fault_tolerance
 
 '''
@@ -102,6 +102,7 @@ class sql_conn:
                 return self.cursor.fetchall()
         except:
             return None
+            
     def __set_col_addup(self, tablename, target_col, cond_col, cond, addoffset):
         # cond can be either value or tuple
         try:
@@ -210,8 +211,7 @@ class sql_conn:
     def get_user_accept_rate(self, userid=None, username=None, user_email=None):
         total = self.get_user_nb_answer(userid, username, user_email)
         if total != 0:
-            return self.get_user_nb_accept(userid, username, user_email) / self.get_user_nb_answer(userid, username,
-                                                                                                   user_email)
+            return self.get_user_nb_accept(userid, username, user_email) / self.get_user_nb_answer(userid, username, user_email)
         else:
             return 0
 
@@ -507,8 +507,6 @@ class sql_conn:
                     #set_trace()
                     label_content.append(subtask['label'])
 
-                    
-                
                 label_content = str(label_content).replace("'", "`")
 #                 ft_flag = self._pre_ft_processing(j['dataid'], label_content)
 #                 print("ft_flag : {}".format(ft_flag))
@@ -517,11 +515,6 @@ class sql_conn:
                 
                 sql = "INSERT INTO text_label(`dataid`,`userid`,`labeldate`,`label_path`,`label_content`,`correct`) VALUES \
                 ({},{},{},'{}','{}',{});".format(j['dataid'], userid, label_date, save_path, label_content, 0)
-                
-                
-                
-                
-                
                     
 #                 if ft_flag == 1:
 #                     # set user nb_accept and credits
@@ -650,8 +643,6 @@ class sql_conn:
         except:
             return ''
         
-
-    
     def __get_finallabel_path(self, sourceid):
         sql = "select tl.label_path from text_data td join text_label tl on td.final_labelid = tl.labelid where td.datasource={};".format(sourceid)
         return self.__exe_sql(sql)
@@ -670,6 +661,3 @@ class sql_conn:
     def close(self):
         self.cursor.close()
         self.conn.close()
-        
-        
-    

@@ -22,10 +22,7 @@ CORS(app)
 
 
 def init_cnx():
-    cnx = connection.MySQLConnection(user='root',
-                                     password='se2018',
-                                     host='127.0.0.1',
-                                     database='se_proj')
+    cnx = connection.MySQLConnection(user='root', password='se2018', host='127.0.0.1', database='se_proj')
     c = sql_conn(cnx)
     return c
 
