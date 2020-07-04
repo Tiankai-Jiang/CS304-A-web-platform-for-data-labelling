@@ -4,7 +4,7 @@ jQuery(document).ready(function() {
     // var ds_name;
     $.ajax({
         type: 'GET',
-        url: 'http://47.106.34.103:5000/data',
+        url: 'http://155.138.154.142:5000/data',
         success: function (json){
             document.getElementById("jsonstring").setAttribute("name", JSON.stringify(json));
             document.getElementById("projname").setAttribute("name", json.message[0].projectName);
@@ -190,7 +190,7 @@ function gatherValues() {
     // alert(JSON.stringify(json_to_return));
     $.ajax({
         type: 'POST',
-        url: 'http://47.106.34.103:5000/retrieve',
+        url: 'http://155.138.154.142:5000/retrieve',
         data: JSON.stringify (json_to_return),
         success: function() {
             alert("Thank you!");
@@ -227,11 +227,11 @@ function queryAgain(){
     // alert(JSON.stringify(json_to_return));
     $.ajax({
         type: 'POST',
-        url: 'http://47.106.34.103:5000/retrieve',
+        url: 'http://155.138.154.142:5000/retrieve',
         data: JSON.stringify (json_to_return),
         success: function() {
             ds_name = document.getElementById("projname").getAttribute("name");
-            fetch_address = "http://47.106.34.103:5000/choose/" + ds_name;
+            fetch_address = "http://155.138.154.142:5000/choose/" + ds_name;
             setTimeout("window.location.href = fetch_address;", 500)            
         },
         contentType: "application/json",

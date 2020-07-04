@@ -14,7 +14,7 @@ var DatatableRemoteAjaxDemo = function() {
                     read: {
                         // sample GET method
                         method: 'GET',
-                        url: 'http://47.106.34.103:5000/task1',
+                        url: 'http://155.138.154.142:5000/task1',
                         map: function(raw) {
                             // sample data mapping
                             //var temp = eval(raw);

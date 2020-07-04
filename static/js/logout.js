@@ -95,7 +95,7 @@ var SnippetLogin = function () {
 
             form.ajaxSubmit({
                 type: "GET",
-                url: "http://47.106.34.103:5000/login/email/" + eMail + "/password/" + passWord,
+                url: "http://155.138.154.142:5000/login/email/" + eMail + "/password/" + passWord,
                 // data:{username:"11510693",password:"wangzehuai1234"},
                 // success: function(response, status, xhr, $form) {
                 success: function (json) {
@@ -176,7 +176,7 @@ var SnippetLogin = function () {
 
             form.ajaxSubmit({
                 type: "GET",
-                url: "http://47.106.34.103:5000/register/email/" + uMail + "/username/" + uName + "/password/" + uPd,
+                url: "http://155.138.154.142:5000/register/email/" + uMail + "/username/" + uName + "/password/" + uPd,
                 success: function (json) {
                     // similate 2s delay
                     if (json.code == 0) {
@@ -236,7 +236,7 @@ var SnippetLogin = function () {
             btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
 
             form.ajaxSubmit({
-                url: 'http://47.106.34.103:5000/forget/email/' + mMail,
+                url: 'http://155.138.154.142:5000/forget/email/' + mMail,
                 success: function (json) {
                     if (json.code == 0) {
                         setTimeout(function () {

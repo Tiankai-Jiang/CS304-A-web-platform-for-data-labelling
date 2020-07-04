@@ -1,7 +1,7 @@
 jQuery(document).ready(function () {
     $.ajax({
         type: 'GET',
-        url: 'http://47.106.34.103:5000/profile',
+        url: 'http://155.138.154.142:5000/profile',
         success: function (json) {
             var parsedData = json.message;
             document.getElementById('usrname').innerHTML = parsedData.user_name;

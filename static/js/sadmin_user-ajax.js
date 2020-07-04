@@ -55,7 +55,7 @@ var DatatableRemoteAjax1 = function () {
                     read: {
                         // sample GET method
                         method: 'GET',
-                        url: 'http://47.106.34.103:5000/alladmin',
+                        url: 'http://155.138.154.142:5000/alladmin',
                         map: function (raw) {
                             // sample data mapping
                             //var temp = eval(raw);
@@ -220,7 +220,7 @@ var DatatableRemoteAjax2 = function () {
                     read: {
                         // sample GET method
                         method: 'GET',
-                        url: 'http://47.106.34.103:5000/alluser',
+                        url: 'http://155.138.154.142:5000/alluser',
                         map: function (raw) {
                             // sample data mapping
                             //var temp = eval(raw);
@@ -450,7 +450,7 @@ var NewAdminReg = function () {
 
             form.ajaxSubmit({
                 type: "GET",
-                url: "http://47.106.34.103:5000/register/admin_email/" + uMail + "/adminname/" + uName + "/password/" + uPd,
+                url: "http://155.138.154.142:5000/register/admin_email/" + uMail + "/adminname/" + uName + "/password/" + uPd,
                 success: function (json) {
                     if (json.code == 0) {
                         setTimeout(function () {

@@ -10,7 +10,7 @@ var Dashboard = function () {
 
         $.ajax({
             type: 'GET',
-            url: 'http://47.106.34.103:5000/pan',
+            url: 'http://155.138.154.142:5000/pan',
             success: function (json) {
                 var parsedData = json.message;
                 Morris.Donut({
@@ -86,7 +86,7 @@ var Dashboard = function () {
 jQuery(document).ready(function () {
     $.ajax({
         type: 'GET',
-        url: 'http://47.106.34.103:5000/profile',
+        url: 'http://155.138.154.142:5000/profile',
         success: function (json) {
             var parsedData = json.message;
             document.getElementById('figure1').innerHTML = parsedData.num_answer;
@@ -114,7 +114,7 @@ jQuery(document).ready(function () {
     });
     $.ajax({
         type: 'GET',
-        url: 'http://47.106.34.103:5000/pan_history',
+        url: 'http://155.138.154.142:5000/pan_history',
         success: function (json) {
             var parsedData = json.message;
             document.getElementById('l1').innerHTML = parsedData[0];
@@ -127,7 +127,7 @@ jQuery(document).ready(function () {
 
     $.ajax({
         type: 'GET',
-        url: 'http://47.106.34.103:5000/recent_task',
+        url: 'http://155.138.154.142:5000/recent_task',
         success: function (json) {
             var temps = new Array();
             temps[0] = "info";

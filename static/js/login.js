@@ -93,7 +93,7 @@ var SnippetLogin = function () {
             if (document.getElementById("checkAdmin").checked) {
                 form.ajaxSubmit({
                     type: "GET",
-                    url: "http://47.106.34.103:5000/login_admin/email/" + eMail + "/password/" + passWord,
+                    url: "http://155.138.154.142:5000/login_admin/email/" + eMail + "/password/" + passWord,
                     success: function (json) {
                         // similate 2s dela
                         if (json.code == 0) {
@@ -115,7 +115,7 @@ var SnippetLogin = function () {
             }else{
                 form.ajaxSubmit({
                     type: "GET",
-                    url: "http://47.106.34.103:5000/login/email/" + eMail + "/password/" + passWord,
+                    url: "http://155.138.154.142:5000/login/email/" + eMail + "/password/" + passWord,
                     success: function (json) {
                         if (json.code == 0) {
                             // alert("Welcome, someone");
@@ -193,7 +193,7 @@ var SnippetLogin = function () {
 
             form.ajaxSubmit({
                 type: "GET",
-                url: "http://47.106.34.103:5000/register/email/" + uMail + "/username/" + uName + "/password/" + uPd,
+                url: "http://155.138.154.142:5000/register/email/" + uMail + "/username/" + uName + "/password/" + uPd,
                 success: function (json) {
                     // similate 2s delay
                     if (json.code == 0) {
@@ -252,7 +252,7 @@ var SnippetLogin = function () {
             btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
 
             form.ajaxSubmit({
-                url: 'http://47.106.34.103:5000/forget/email/' + mMail,
+                url: 'http://155.138.154.142:5000/forget/email/' + mMail,
                 success: function (json) {
                     if (json.code == 0) {
                         setTimeout(function () {
