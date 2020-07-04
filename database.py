@@ -5,6 +5,7 @@ import datetime
 import random
 from shutil import copyfile, make_archive, rmtree
 import fault_tolerance
+from os.path import expanduser
 
 '''
 clear database
@@ -465,7 +466,7 @@ class sql_conn:
         return self.__set_col('text_label','correct', 'labelid', labelid, value)
     
     
-    def insert_label(self, user_email, json_list, save_dir='/home/se2018/label/', label_date=get_timestamp(), correct=0):
+    def insert_label(self, user_email, json_list, save_dir=expanduser("~")+'/label/', label_date=get_timestamp(), correct=0):
         # insert label , save label json file from the same user of the same project
 #         try:
         if 1:
@@ -551,7 +552,7 @@ class sql_conn:
         correct_labelid = fault_tolerance.ft_algo(ft_data,nb_json,self.ft_params['threshold'][self.__ft_degree_dict[ft_degree]], self.ft_params['init_acc'], self.ft_params['nb_bel_ratio'])
         #save ft log
         log = {'data':ft_data, 'result':correct_labelid}
-        with open('/home/se2018/Log/'+str(get_timestamp())+'.json', 'w') as file:
+        with open(expanduser("~")+'/Log/'+str(get_timestamp())+'.json', 'w') as file:
                 file.write(json.dumps(log))
         
         print("correct answer: {}".format(correct_labelid))

@@ -8,10 +8,10 @@ import zipfile
 import datetime
 import shutil
 from werkzeug.utils import secure_filename
+from os.path import expanduser
 
-
-UPLOAD_FOLDER = '/home/se2018/CS304-A-web-platform-for-data-labelling/upload'
-EXTRACT_FOLDER = '/home/se2018/data'
+UPLOAD_FOLDER = expanduser("~") + '/CS304-A-web-platform-for-data-labelling/upload'
+EXTRACT_FOLDER = expanduser("~") + '/data'
 ALLOWED_EXTENSIONS = set(['zip'])
 
 app = Flask(__name__)
@@ -490,7 +490,7 @@ def retrieve_label():
                 message = request.json['message']
                 c = init_cnx()
                 # Store label jsons in database
-                signal = c.insert_label(user_email=session['email'], json_list=message, save_dir='/home/se2018/label/')
+                signal = c.insert_label(user_email=session['email'], json_list=message, save_dir=expanduser("~") + '/label/')
                 c.close()
                 print(signal)
                 if signal == 1:
@@ -593,7 +593,7 @@ def recapcha():
 def download_file(path):
     path = path.split('.zip')[0]
     c = init_cnx()
-    file = c.download_label(sourcename=path, zip_path='/home/se2018/'+path)
+    file = c.download_label(sourcename=path, zip_path=expanduser("~")+ '/' +path)
     c.close()
     return send_file(file, as_attachment=True)
 
