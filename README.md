@@ -21,8 +21,8 @@ This is a project provided by [Yimian Data](https://www.yimian.io). Texts and im
 We currently have three web pages:
 
 [Index](http://155.138.154.142:5000/) 
-[Main Page](http://155.138.154.142:5000/mainpage)
-[Log in](http://155.138.154.142:5000/login)
+[Main Page](http://155.138.154.142:5000/mainpage.html)
+[Log in](http://155.138.154.142:5000/login.html)
 
 [Image Label](http://155.138.154.142:5000/imagelabel.html)
 [Publish](http://155.138.154.142:5000/publish.html)
